@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/CMakeFiles/bootloader
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/CMakeFiles/bootloader.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/CMakeFiles/bootloader-complete.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+D:/espproject/ESP-IDF/08_lvgl_Porting/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

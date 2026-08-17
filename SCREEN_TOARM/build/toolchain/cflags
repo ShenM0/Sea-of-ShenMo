@@ -1,0 +1,6 @@
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
+-mdisable-hardware-atomics
+"-specs=D:/espproject/ESP-IDF/08_lvgl_Porting/build/specs/picolibc.specs"
