@@ -1,0 +1,18 @@
+# 树莓派5 (Raspberry Pi OS 64-bit, Bookworm) 依赖
+# PyTorch: 用官方 aarch64 CPU wheel
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# pyrealsense2: 较新版本提供 aarch64 wheel; 若无匹配版本需源码编译 librealsense
+#   pip install pyrealsense2
+
+numpy
+opencv-python
+PySide6
+pyserial
+PyYAML
+matplotlib
+Pillow
+scipy
+tqdm
+seaborn
+pandas
+tensorboard
