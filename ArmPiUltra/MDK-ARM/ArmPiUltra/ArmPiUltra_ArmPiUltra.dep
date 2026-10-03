@@ -1,8 +1,8 @@
 Dependencies for Project 'ArmPiUltra', Target 'ArmPiUltra': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f103xb.s)(0x685AA840)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 537" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o armpiultra\startup_stm32f103xb.o --depend armpiultra\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x6A37A652)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\main.o --omf_browse armpiultra\main.crf --depend armpiultra\main.d)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+F (../Core/Src/main.c)(0x6A37A654)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\main.o --omf_browse armpiultra\main.crf --depend armpiultra\main.d)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -50,7 +50,7 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (../Core/Inc/adc.h)(0x685169BE)
 I (../Core/Inc/crc.h)(0x68517338)
 I (../Core/Inc/dma.h)(0x685171B6)
@@ -59,11 +59,11 @@ I (../Core/Inc/spi.h)(0x685169BE)
 I (../Core/Inc/tim.h)(0x685169BE)
 I (../Core/Inc/usart.h)(0x685169BE)
 I (../Core/Inc/gpio.h)(0x685169BC)
-I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C69)
+I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C6A)
 I (D:\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (../Core/Src/gpio.c)(0x685282EC)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\gpio.o --omf_browse armpiultra\gpio.crf --depend armpiultra\gpio.d)
 I (../Core/Inc/gpio.h)(0x685169BC)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -111,10 +111,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/adc.c)(0x685AA32A)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\adc.o --omf_browse armpiultra\adc.crf --depend armpiultra\adc.d)
 I (../Core/Inc/adc.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -162,10 +162,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/crc.c)(0x68517338)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\crc.o --omf_browse armpiultra\crc.crf --depend armpiultra\crc.d)
 I (../Core/Inc/crc.h)(0x68517338)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -213,10 +213,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/dma.c)(0x6854CE22)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\dma.o --omf_browse armpiultra\dma.crf --depend armpiultra\dma.d)
 I (../Core/Inc/dma.h)(0x685171B6)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -264,10 +264,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/i2c.c)(0x685282EE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\i2c.o --omf_browse armpiultra\i2c.crf --depend armpiultra\i2c.d)
 I (../Core/Inc/i2c.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -315,10 +315,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/spi.c)(0x685169BE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\spi.o --omf_browse armpiultra\spi.crf --depend armpiultra\spi.d)
 I (../Core/Inc/spi.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -366,10 +366,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Core/Src/tim.c)(0x6852C564)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\tim.o --omf_browse armpiultra\tim.crf --depend armpiultra\tim.d)
 I (../Core/Inc/tim.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -417,10 +417,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
-F (../Core/Src/usart.c)(0x6917053A)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\usart.o --omf_browse armpiultra\usart.crf --depend armpiultra\usart.d)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
+F (../Core/Src/usart.c)(0x6917053C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\usart.o --omf_browse armpiultra\usart.crf --depend armpiultra\usart.d)
 I (../Core/Inc/usart.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -468,10 +468,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (D:\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (../Core/Src/stm32f1xx_it.c)(0x685A603A)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\stm32f1xx_it.o --omf_browse armpiultra\stm32f1xx_it.crf --depend armpiultra\stm32f1xx_it.d)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -519,12 +519,12 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (../Core/Inc/stm32f1xx_it.h)(0x6854CE24)
-I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C69)
+I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C6A)
 I (../Core/Inc/usart.h)(0x685169BE)
 F (../Core/Src/stm32f1xx_hal_msp.c)(0x685169BE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\stm32f1xx_hal_msp.o --omf_browse armpiultra\stm32f1xx_hal_msp.crf --depend armpiultra\stm32f1xx_hal_msp.d)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -572,7 +572,7 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x6851575C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\stm32f1xx_hal_gpio_ex.o --omf_browse armpiultra\stm32f1xx_hal_gpio_ex.crf --depend armpiultra\stm32f1xx_hal_gpio_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
@@ -1250,7 +1250,7 @@ I (..\Hiwonder\Peripherals\Src\serial_servo.h)(0x6858F2A6)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (../Core/Inc/usart.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1294,7 +1294,7 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (D:\keil\Core\ARM\ARMCC\include\stdarg.h)(0x60252376)
 F (..\Hiwonder\Peripherals\Src\key.c)(0x685A63E2)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\key.o --omf_browse armpiultra\key.crf --depend armpiultra\key.d)
 I (..\Hiwonder\Peripherals\Src\key.h)(0x685A5A6C)
@@ -1310,9 +1310,9 @@ I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (../Hiwonder/System/packet_reports.h)(0x69170115)
+I (../Hiwonder/System/packet_reports.h)(0x69170116)
 I (..\Hiwonder\Peripherals\Src\buzzer.h)(0x6853DB9C)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1346,12 +1346,12 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6851575C)
 I (../Hiwonder/Peripherals/Src/led.h)(0x6854DE0C)
 I (../Hiwonder/Peripherals/Src/serial_servo.h)(0x6858F2A6)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Peripherals\Src\hiwonder_err.h)(0x6852C40A)()
 F (..\Hiwonder\Peripherals\Src\w25q64.c)(0x67B58C38)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\w25q64.o --omf_browse armpiultra\w25q64.crf --depend armpiultra\w25q64.d)
 I (..\Hiwonder\Peripherals\Src\w25q64.h)(0x67CAA320)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1398,13 +1398,13 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (../Core/Inc/spi.h)(0x685169BE)
 F (..\Hiwonder\Peripherals\Src\w25q64.h)(0x67CAA320)()
 F (..\Hiwonder\Peripherals\Src\i2c_bus_manager.c)(0x6863AD14)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\i2c_bus_manager.o --omf_browse armpiultra\i2c_bus_manager.crf --depend armpiultra\i2c_bus_manager.d)
 I (..\Hiwonder\Peripherals\Src\i2c_bus_manager.h)(0x6863877E)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1451,14 +1451,14 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Peripherals\Src\i2c_bus_manager.h)(0x6863877E)()
 F (..\Hiwonder\Portings\Src\led_porting.c)(0x685A6DA0)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\led_porting.o --omf_browse armpiultra\led_porting.crf --depend armpiultra\led_porting.d)
 I (../Hiwonder/Peripherals/Src/led.h)(0x6854DE0C)
 I (D:\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1502,7 +1502,7 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Portings\Src\key_porting.c)(0x685BD522)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\key_porting.o --omf_browse armpiultra\key_porting.crf --depend armpiultra\key_porting.d)
 I (../Hiwonder/Peripherals/Src/key.h)(0x685A5A6C)
 I (D:\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
@@ -1539,7 +1539,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6851575C)
 I (../Core/Inc/gpio.h)(0x685169BC)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Hiwonder/Peripherals/Src/buzzer.h)(0x6853DB9C)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (../Hiwonder/Peripherals/Src/led.h)(0x6854DE0C)
@@ -1553,7 +1553,7 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Portings\Src\serial_servo_porting.c)(0x685A6DDE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\serial_servo_porting.o --omf_browse armpiultra\serial_servo_porting.crf --depend armpiultra\serial_servo_porting.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
@@ -1587,7 +1587,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6851575C)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Hiwonder/Peripherals/Src/buzzer.h)(0x6853DB9C)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (../Hiwonder/Peripherals/Src/key.h)(0x685A5A6C)
@@ -1603,9 +1603,9 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Portings\Src\packet_porting.c)(0x6863E9D4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\packet_porting.o --omf_browse armpiultra\packet_porting.crf --depend armpiultra\packet_porting.d)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1653,14 +1653,14 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (../Core/Inc/usart.h)(0x685169BE)
 F (..\Hiwonder\Portings\Src\buzzer_porting.c)(0x68593FA4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\buzzer_porting.o --omf_browse armpiultra\buzzer_porting.crf --depend armpiultra\buzzer_porting.d)
 I (../Hiwonder/Peripherals/Src/buzzer.h)(0x6853DB9C)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (../Core/Inc/tim.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1705,11 +1705,11 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
-F (..\Hiwonder\System\battery_handle.c)(0x6A203D70)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\battery_handle.o --omf_browse armpiultra\battery_handle.crf --depend armpiultra\battery_handle.d)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
+F (..\Hiwonder\System\battery_handle.c)(0x6A203D72)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\battery_handle.o --omf_browse armpiultra\battery_handle.crf --depend armpiultra\battery_handle.d)
 I (..\Hiwonder\System\battery_handle.h)(0x68594F9E)
 I (../Core/Inc/adc.h)(0x685169BE)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1757,10 +1757,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
-I (..\Hiwonder\System\packet_reports.h)(0x69170115)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
+I (..\Hiwonder\System\packet_reports.h)(0x69170116)
 F (..\Hiwonder\System\battery_handle.h)(0x68594F9E)()
-F (..\Hiwonder\System\packet_handle.c)(0x6A37A652)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\packet_handle.o --omf_browse armpiultra\packet_handle.crf --depend armpiultra\packet_handle.d)
+F (..\Hiwonder\System\packet_handle.c)(0x6A37A654)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\packet_handle.o --omf_browse armpiultra\packet_handle.crf --depend armpiultra\packet_handle.d)
 I (../Hiwonder/Peripherals/Src/led.h)(0x6854DE0C)
 I (D:\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -1776,8 +1776,8 @@ I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
 I (../Hiwonder/Peripherals/Src/serial_servo.h)(0x6858F2A6)
 I (../Hiwonder/Peripherals/Src/buzzer.h)(0x6853DB9C)
-I (..\Hiwonder\System\packet_reports.h)(0x69170115)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (..\Hiwonder\System\packet_reports.h)(0x69170116)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1810,10 +1810,10 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6851575C)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6851575C)
 I (../Hiwonder/Peripherals/Src/key.h)(0x685A5A6C)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
-F (..\Hiwonder\System\packet_reports.h)(0x69170115)()
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
+F (..\Hiwonder\System\packet_reports.h)(0x69170116)()
 F (..\Hiwonder\Misc\packet.h)(0x685D03A6)()
-F (..\Hiwonder\Misc\packet.c)(0x691702AA)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\packet.o --omf_browse armpiultra\packet.crf --depend armpiultra\packet.d)
+F (..\Hiwonder\Misc\packet.c)(0x691702AC)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\packet.o --omf_browse armpiultra\packet.crf --depend armpiultra\packet.d)
 I (..\Hiwonder\Misc\packet.h)(0x685D03A6)
 I (..\Hiwonder\Misc\hiwonder_err.h)(0x65A50A96)
 I (..\Hiwonder\Misc\lwmem_porting.h)(0x65A4ED20)
@@ -1828,7 +1828,7 @@ I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
 I (D:\keil\Core\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (..\Hiwonder\Misc\checksum.h)(0x64BA46D2)
 I (../Hiwonder/Peripherals/Src/led.h)(0x6854DE0C)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1863,7 +1863,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6851575C)
 I (../Hiwonder/Peripherals/Src/buzzer.h)(0x6853DB9C)
 I (../Hiwonder/Peripherals/Src/key.h)(0x685A5A6C)
 I (../Hiwonder/Peripherals/Src/serial_servo.h)(0x6858F2A6)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 F (..\Hiwonder\Misc\lwrb.h)(0x619FDC14)()
 F (..\Hiwonder\Misc\lwrb.c)(0x65A4EAE0)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\lwrb.o --omf_browse armpiultra\lwrb.crf --depend armpiultra\lwrb.d)
 I (..\Hiwonder\Misc\lwrb.h)(0x619FDC14)
@@ -1896,9 +1896,9 @@ I (..\Hiwonder\Misc\checksum.h)(0x64BA46D2)
 I (D:\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (D:\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
 F (..\Hiwonder\Arm\src\LeArm.lib)(0x6807652E)()
-F (..\Hiwonder\Arm\src\robot_arm.c)(0x6A380FE9)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\robot_arm.o --omf_browse armpiultra\robot_arm.crf --depend armpiultra\robot_arm.d)
-I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C69)
-I (../Core/Inc/main.h)(0x6A24EBFA)
+F (..\Hiwonder\Arm\src\robot_arm.c)(0x6A380FEA)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O1 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Hiwonder/Peripherals/Src -I ../Hiwonder/Portings/Src -I ../Hiwonder/Portings/Inc -I ../Hiwonder/Misc -I ../Hiwonder/System -I ../Hiwonder/Arm/Inc -I ../Hiwonder/Arm/src -I ..\Hiwonder\Chassis\Inc -I ..\Hiwonder\Chassis\Src-I.\RTE\_ArmPiUltra-ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include-ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o armpiultra\robot_arm.o --omf_browse armpiultra\robot_arm.crf --depend armpiultra\robot_arm.d)
+I (../Hiwonder/Peripherals/Src/global.h)(0x6A378C6A)
+I (../Core/Inc/main.h)(0x6A24EBFC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6851575C)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x685AA32E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6851575C)
@@ -1946,10 +1946,10 @@ I (../Hiwonder/Misc/lwmem_opt.h)(0x63D8BB80)
 I (../Hiwonder/Misc/lwmem_opts.h)(0x65A4EAA4)
 I (../Hiwonder/Misc/lwrb.h)(0x619FDC14)
 I (D:\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E69)
+I (../Hiwonder/Arm/Inc/robot_arm.h)(0x6A380E6A)
 I (../Hiwonder/Arm/Inc/Kinematics.h)(0x6863FC42)
 I (D:\keil\Core\ARM\ARMCC\include\math.h)(0x60252378)
 I (../Hiwonder/Peripherals/Src/w25q64.h)(0x67CAA320)
 I (D:\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (..\Hiwonder\Arm\Inc\kinematics.h)(0x6863FC42)()
-F (..\Hiwonder\Arm\Inc\robot_arm.h)(0x6A380E69)()
+F (..\Hiwonder\Arm\Inc\robot_arm.h)(0x6A380E6A)()
