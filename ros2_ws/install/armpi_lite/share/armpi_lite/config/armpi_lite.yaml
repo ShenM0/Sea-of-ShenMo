@@ -1,0 +1,48 @@
+# armpi_lite 包统一参数配置
+# 每个节点只读取自己声明的参数，其余忽略。
+
+d435i_camera:
+  ros__parameters:
+    width: 640
+    height: 480
+    fps: 30
+    serial_no: ''          # 多相机时填序列号，单相机留空
+    retry_interval_s: 3.0
+
+arm_detect:
+  ros__parameters:
+    # weights 默认使用包内 share/armpi_lite/yolov5_vendor/weights/best.pt
+    conf_threshold: 0.6
+    iou_threshold: 0.45
+    input_size: 512
+    device: 'cpu'
+    # ===== 相机安装偏移（厘米），按实际安装位置修改 =====
+    # 含义与 hwcompt 原程序一致：相机在机械臂前方 x_offset、上方 z_offset 处
+    x_offset_cm: 18.0
+    y_offset_cm: 1.5
+    z_offset_cm: 16.0
+    # 深度取值
+    depth_roi_radius: 3    # 检测框中心 7x7 邻域取中位数深度
+    min_depth_m: 0.05
+    max_depth_m: 1.5
+    # 抓取触发条件：连续 stable_frames 帧目标位置变化不超过 stable_tolerance_cm
+    stable_frames: 5
+    stable_tolerance_cm: 3.0
+    lost_frames_reset: 15  # 目标丢失这么多帧后允许再次触发
+    auto_trigger: false    # true=检测稳定后自动执行抓取；false=等调试界面手动确认
+    publish_debug_image: true
+
+arm_controller:
+  ros__parameters:
+    serial_port: ''        # 留空自动探测 /dev/ttyUSB*、/dev/ttyACM*，也可用环境变量 ARM_SERIAL_PORT
+    baudrate: 1000000
+    pitch: 45.0            # 抓取时末端俯仰角（度），调试界面可临时修改
+    min_pitch: -90.0
+    max_pitch: 90.0
+    move_time_ms: 1500     # 移动到目标的时间
+    claw_close_angle: 30.0 # 合爪角度（0=完全闭合，90=完全张开）
+    claw_time_ms: 500      # 夹爪动作时间
+    return_time_ms: 1500   # 回工作原位的时间
+    step_delay_ms: 20      # 步骤间额外等待
+    dry_run: false         # true = 只打印数据帧不发送（无硬件调试）
+    reconnect_interval_s: 3.0

@@ -1,0 +1,6 @@
+[console_scripts]
+arm_node = armpi_lite.arm_node:main
+camera_node = armpi_lite.camera_node:main
+detect_node = armpi_lite.detect_node:main
+gui_node = armpi_lite.gui_node:main
+

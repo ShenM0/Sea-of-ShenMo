@@ -1,0 +1,109 @@
+[0.940s] Invoking command in '/home/shenmo/ros/ros2ver/ros2_ws/src/armpi_lite': PYTHONPATH=/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/armpi_lite build --build-base /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build install --record /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log --install-scripts $base/lib/armpi_lite --single-version-externally-managed install_data
+[1.208s] running egg_info
+[1.209s] writing ../../build/armpi_lite/armpi_lite.egg-info/PKG-INFO
+[1.209s] writing dependency_links to ../../build/armpi_lite/armpi_lite.egg-info/dependency_links.txt
+[1.210s] writing entry points to ../../build/armpi_lite/armpi_lite.egg-info/entry_points.txt
+[1.210s] writing requirements to ../../build/armpi_lite/armpi_lite.egg-info/requires.txt
+[1.210s] writing top-level names to ../../build/armpi_lite/armpi_lite.egg-info/top_level.txt
+[1.211s] writing manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+[1.214s] reading manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+[1.216s] writing manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+[1.216s] running build
+[1.216s] running build_py
+[1.217s] copying armpi_lite/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.217s] copying armpi_lite/camera_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.217s] copying armpi_lite/detect_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.217s] copying armpi_lite/serial_protocol.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.218s] copying armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.218s] copying armpi_lite/kinematics.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.218s] copying armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[1.219s] running install
+[1.219s] running install_lib
+[1.220s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.220s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/camera_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.221s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/detect_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.221s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/serial_protocol.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.221s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.221s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/kinematics.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.222s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[1.222s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/__init__.py to __init__.cpython-310.pyc
+[1.222s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/camera_node.py to camera_node.cpython-310.pyc
+[1.224s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/detect_node.py to detect_node.cpython-310.pyc
+[1.229s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/serial_protocol.py to serial_protocol.cpython-310.pyc
+[1.230s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/arm_node.py to arm_node.cpython-310.pyc
+[1.232s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/kinematics.py to kinematics.cpython-310.pyc
+[1.233s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/gui_node.py to gui_node.cpython-310.pyc
+[1.235s] running install_data
+[1.235s] copying resource/armpi_lite -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/ament_index/resource_index/packages
+[1.235s] copying package.xml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite
+[1.235s] copying launch/grasp.launch.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/launch
+[1.236s] copying config/armpi_lite.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/config
+[1.236s] copying yolov5_vendor/config/yolov5s.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/config
+[1.236s] copying yolov5_vendor/models/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.236s] copying yolov5_vendor/models/yolo.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.237s] copying yolov5_vendor/models/yolov5s.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.237s] copying yolov5_vendor/models/yolov5m.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.237s] copying yolov5_vendor/models/experimental.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.237s] copying yolov5_vendor/models/common.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.238s] copying yolov5_vendor/models/yolov5x.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.238s] copying yolov5_vendor/models/yolov5l.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.238s] copying yolov5_vendor/models/tf.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.238s] copying yolov5_vendor/models/yolov5n.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.239s] copying yolov5_vendor/models/pruned_common.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models
+[1.239s] copying yolov5_vendor/models/hub/yolov5-panet.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.239s] copying yolov5_vendor/models/hub/yolov3-tiny.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.240s] copying yolov5_vendor/models/hub/yolov5-p6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.240s] copying yolov5_vendor/models/hub/yolov5m6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.240s] copying yolov5_vendor/models/hub/yolov3-spp.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.240s] copying yolov5_vendor/models/hub/yolov5n6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.240s] copying yolov5_vendor/models/hub/yolov5x6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.241s] copying yolov5_vendor/models/hub/yolov5s6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.241s] copying yolov5_vendor/models/hub/yolov5-bifpn.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.241s] copying yolov5_vendor/models/hub/yolov5-p7.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.242s] copying yolov5_vendor/models/hub/yolov5-fpn.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.242s] copying yolov5_vendor/models/hub/yolov5l6.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.242s] copying yolov5_vendor/models/hub/anchors.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.242s] copying yolov5_vendor/models/hub/yolov3.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.243s] copying yolov5_vendor/models/hub/yolov5-p2.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.243s] copying yolov5_vendor/models/hub/yolov5s-transformer.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.243s] copying yolov5_vendor/models/hub/yolov5s-ghost.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/models/hub
+[1.243s] copying yolov5_vendor/weights/best.pt -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/weights
+[1.278s] copying yolov5_vendor/utils/loss.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.278s] copying yolov5_vendor/utils/augmentations.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.278s] copying yolov5_vendor/utils/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.279s] copying yolov5_vendor/utils/callbacks.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.279s] copying yolov5_vendor/utils/activations.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.279s] copying yolov5_vendor/utils/metrics.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.280s] copying yolov5_vendor/utils/downloads.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.280s] copying yolov5_vendor/utils/general.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.280s] copying yolov5_vendor/utils/plots.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.280s] copying yolov5_vendor/utils/datasets.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.280s] copying yolov5_vendor/utils/autoanchor.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.281s] copying yolov5_vendor/utils/torch_utils.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils
+[1.281s] copying yolov5_vendor/utils/google_app_engine/Dockerfile -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/google_app_engine
+[1.281s] copying yolov5_vendor/utils/google_app_engine/additional_requirements.txt -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/google_app_engine
+[1.282s] copying yolov5_vendor/utils/google_app_engine/app.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/google_app_engine
+[1.282s] copying yolov5_vendor/utils/loggers/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers
+[1.282s] copying yolov5_vendor/utils/loggers/wandb/log_dataset.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.282s] copying yolov5_vendor/utils/loggers/wandb/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.283s] copying yolov5_vendor/utils/loggers/wandb/sweep.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.283s] copying yolov5_vendor/utils/loggers/wandb/sweep.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.283s] copying yolov5_vendor/utils/loggers/wandb/README.md -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.283s] copying yolov5_vendor/utils/loggers/wandb/wandb_utils.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/loggers/wandb
+[1.283s] copying yolov5_vendor/utils/aws/__init__.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/aws
+[1.284s] copying yolov5_vendor/utils/aws/userdata.sh -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/aws
+[1.284s] copying yolov5_vendor/utils/aws/resume.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/aws
+[1.284s] copying yolov5_vendor/utils/aws/mime.sh -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/aws
+[1.284s] copying yolov5_vendor/utils/flask_rest_api/example_request.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/flask_rest_api
+[1.285s] copying yolov5_vendor/utils/flask_rest_api/restapi.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/flask_rest_api
+[1.285s] copying yolov5_vendor/utils/flask_rest_api/README.md -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/yolov5_vendor/utils/flask_rest_api
+[1.285s] running install_egg_info
+[1.288s] removing '/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info' (and everything under it)
+[1.289s] Copying ../../build/armpi_lite/armpi_lite.egg-info to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info
+[1.291s] running install_scripts
+[1.316s] Installing arm_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[1.317s] Installing camera_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[1.317s] Installing detect_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[1.317s] Installing gui_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[1.318s] writing list of installed files to '/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log'
+[1.359s] Invoked command in '/home/shenmo/ros/ros2ver/ros2_ws/src/armpi_lite' returned '0': PYTHONPATH=/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/armpi_lite build --build-base /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build install --record /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log --install-scripts $base/lib/armpi_lite --single-version-externally-managed install_data
