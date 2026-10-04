@@ -39,10 +39,12 @@ class GuiNode(Node):
         self.create_subscription(String, '/armpi_lite/status', self.on_status, 10)
         self.create_subscription(PointStamped, '/armpi_lite/target_stable', self.on_stable, 10)
         self.create_subscription(Image, '/armpi_lite/detection_image', self.on_image, 2)
+        self.create_subscription(String, '/armpi_lite/nfc_card', self.on_nfc, 10)
 
         self.status_callback = None
         self.stable_callback = None
         self.image_callback = None
+        self.nfc_callback = None
 
     def on_status(self, msg):
         if self.status_callback:
@@ -55,6 +57,10 @@ class GuiNode(Node):
     def on_image(self, msg):
         if self.image_callback:
             self.image_callback(msg)
+
+    def on_nfc(self, msg):
+        if self.nfc_callback:
+            self.nfc_callback(msg.data)
 
     def set_pitch(self, pitch):
         """通过参数服务临时修改 arm_controller 节点的 pitch 参数（不改变配置文件）。"""
@@ -85,6 +91,7 @@ class MainWindow(QMainWindow):
     status_received = pyqtSignal(str)
     stable_received = pyqtSignal(tuple)
     image_received = pyqtSignal(object)
+    nfc_received = pyqtSignal(str)
 
     def __init__(self, node):
         super().__init__()
@@ -97,9 +104,11 @@ class MainWindow(QMainWindow):
         node.status_callback = self.status_received.emit
         node.stable_callback = self.stable_received.emit
         node.image_callback = self.image_received.emit
+        node.nfc_callback = self.nfc_received.emit
         self.status_received.connect(self.append_status)
         self.stable_received.connect(self.update_stable)
         self.image_received.connect(self.update_image)
+        self.nfc_received.connect(self.update_nfc)
 
         central = QWidget()
         self.setCentralWidget(central)
@@ -157,6 +166,17 @@ class MainWindow(QMainWindow):
         self.camera_box.setVisible(False)
         root.addWidget(self.camera_box)
 
+        # NFC 刷卡显示（订阅 /armpi_lite/nfc_card，由 arm_node 后台读取串口上报）
+        nfc_box = QGroupBox('NFC 刷卡')
+        nfc_layout = QVBoxLayout(nfc_box)
+        self.nfc_label = QLabel('暂无刷卡')
+        self.nfc_label.setAlignment(Qt.AlignCenter)
+        self.nfc_label.setStyleSheet(
+            'font-size: 24px; font-weight: bold; color: #3a3;')
+        nfc_layout.addWidget(self.nfc_label)
+        nfc_layout.addWidget(QLabel('提示: 卡片靠近 PN532 后自动显示卡号 UID'))
+        root.addWidget(nfc_box)
+
         # 状态日志
         status_box = QGroupBox('状态')
         status_layout = QVBoxLayout(status_box)
@@ -201,6 +221,10 @@ class MainWindow(QMainWindow):
         self.stable_xyz = xyz
         self.stable_label.setText(f'稳定目标: ({xyz[0]:.1f}, {xyz[1]:.1f}, {xyz[2]:.1f}) cm')
         self.grasp_btn.setEnabled(True)
+
+    def update_nfc(self, uid_str):
+        self.nfc_label.setText(f'UID: {uid_str}')
+        self.append_status(f'[NFC] 刷卡 UID: {uid_str}')
 
     def update_image(self, msg):
         img = np.frombuffer(msg.data, dtype=np.uint8).reshape(msg.height, msg.width, 3)

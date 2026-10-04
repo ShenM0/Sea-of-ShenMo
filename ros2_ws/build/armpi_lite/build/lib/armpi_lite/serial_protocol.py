@@ -16,6 +16,14 @@ START_BYTE_2 = 0x55
 PACKET_FUNC_BUS_SERVO = 0x05
 BUS_SERVO_CMD_SET_POSITION = 0x01
 
+# PN532 NFC（固件功能号 0x11）
+PACKET_FUNC_NFC = 0x11
+NFC_SUBCMD_CARD = 0x01   # 固件主动上报: [0x01, uid_len, uid...]
+NFC_SUBCMD_SCAN = 0x02   # 请求扫描 I2C1 总线
+NFC_SUBCMD_POLL = 0x04   # 请求单次寻卡
+NFC_SUBCMD_RAW_READ = 0x06  # 调试: 原始读 n 字节（不写命令）
+NFC_SUBCMD_DUMP = 0x07      # 调试: 写寻卡命令后原始读回复
+
 DEFAULT_SERIAL_CANDIDATES = [
     "/dev/ttyUSB0",
     "/dev/ttyACM0",
@@ -121,3 +129,49 @@ def camera_to_arm_xyz_cm(camera_xyz, x_offset_cm=0.0, y_offset_cm=0.0, z_offset_
     target_z = -camera_y_m * 100.0 + z_offset_cm
 
     return [round(target_x, 2), round(target_y, 2), round(target_z, 2)]
+
+
+def build_nfc_scan_frame():
+    """请求固件扫描 I2C1 总线（用于确认 PN532 实际地址）。"""
+    return _build_frame(PACKET_FUNC_NFC, bytes([NFC_SUBCMD_SCAN]))
+
+
+def build_nfc_poll_frame():
+    """请求固件立即执行一次寻卡。"""
+    return _build_frame(PACKET_FUNC_NFC, bytes([NFC_SUBCMD_POLL]))
+
+
+def build_nfc_raw_read_frame(n):
+    """调试: 请求固件原始读 n 字节（不写命令）。"""
+    return _build_frame(PACKET_FUNC_NFC, bytes([NFC_SUBCMD_RAW_READ, n]))
+
+
+def build_nfc_dump_frame():
+    """调试: 请求固件写寻卡命令后原始读回复。"""
+    return _build_frame(PACKET_FUNC_NFC, bytes([NFC_SUBCMD_DUMP]))
+
+
+def extract_frames(buf):
+    """从字节流头部解析尽量多的完整合法帧。
+
+    返回 (frames, remaining)：frames 为 [(func, payload), ...]，CRC 校验通过；
+    remaining 为未消费的尾部字节（帧不完整或乱码对齐前的部分）。
+    """
+    frames = []
+    i = 0
+    n = len(buf)
+    while i + 5 <= n:
+        if buf[i] == START_BYTE_1 and buf[i + 1] == START_BYTE_2:
+            func = buf[i + 2]
+            length = buf[i + 3]
+            end = i + 4 + length + 1
+            if end > n:
+                break  # 帧不完整，等更多数据
+            payload = buf[i + 4:i + 4 + length]
+            crc = buf[i + 4 + length]
+            if crc8_maxim(bytes([func, length]) + payload) == crc:
+                frames.append((func, payload))
+            i = end
+        else:
+            i += 1
+    return frames, buf[i:]

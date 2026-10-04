@@ -28,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "global.h"
+#include "pn532.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "led.h" 
@@ -109,6 +110,7 @@ int main(void)
   MX_CRC_Init();
 	
   /* USER CODE BEGIN 2 */
+	pn532_init(); /* PN532 NFC: SAM config (ignore failure when module absent) */
 	leds_init();
 	buzzers_init();
 	serial_servo_init();
@@ -127,6 +129,7 @@ int main(void)
 		leds_task_poll();
 		buzzers[0].refresh(&buzzers[0]); 
 		recv_task();
+		nfc_task_poll(); /* PN532 NFC card polling + report */
 		
 		
   }

@@ -66,6 +66,7 @@ enum PACKET_FUNCTION {
 	PACKET_FUNC_CONVEYOR, 
 	PACKET_FUNC_STEPPER_MOTOR,
   PACKET_FUNC_I2C = 0x10, /**< I2C 总线读写原语（自定义扩展，避开官方已占用的 0x00~0x0D） */
+  PACKET_FUNC_NFC = 0x11, /**< NFC (PN532) card report + debug commands (0x02 scan / 0x04 poll) */
   PACKET_FUNC_NONE,
 };
 

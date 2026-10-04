@@ -46,3 +46,4 @@ arm_controller:
     step_delay_ms: 20      # 步骤间额外等待
     dry_run: false         # true = 只打印数据帧不发送（无硬件调试）
     reconnect_interval_s: 3.0
+    nfc_enabled: true      # true = 开启 PN532(NFC) 刷卡上报读取线程

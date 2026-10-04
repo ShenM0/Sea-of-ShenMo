@@ -28,8 +28,11 @@ from armpi_lite.kinematics import (
     ARM_RANGE, HOME_PITCH, HOME_X, HOME_Y, HOME_Z, solve_ik,
 )
 from armpi_lite.serial_protocol import (
+    NFC_SUBCMD_CARD,
+    PACKET_FUNC_NFC,
     build_bus_servo_position_frame,
     claw_angle_to_position,
+    extract_frames,
     resolve_serial_port,
 )
 
@@ -54,6 +57,7 @@ class ArmNode(Node):
         self.declare_parameter('step_delay_ms', 20)      # 步骤间额外等待
         self.declare_parameter('dry_run', False)
         self.declare_parameter('reconnect_interval_s', 3.0)
+        self.declare_parameter('nfc_enabled', True)
 
         p = lambda name: self.get_parameter(name).value
         self.port_name = p('serial_port')
@@ -65,12 +69,17 @@ class ArmNode(Node):
         self.cmd_queue = queue.Queue(maxsize=1)
 
         self.status_pub = self.create_publisher(String, '/armpi_lite/status', 10)
+        self.nfc_pub = self.create_publisher(String, '/armpi_lite/nfc_card', 10)
         self.create_subscription(PointStamped, '/armpi_lite/target', self.on_target, 10)
         self.create_subscription(Empty, '/armpi_lite/home_cmd', self.on_home_cmd, 10)
         self.create_timer(p('reconnect_interval_s'), self.ensure_serial)
 
         self.worker = threading.Thread(target=self.work_loop, daemon=True)
         self.worker.start()
+
+        if self.get_parameter('nfc_enabled').value:
+            self.reader = threading.Thread(target=self.serial_read_loop, daemon=True)
+            self.reader.start()
 
         if self.dry_run:
             self.report('dry_run=true：只打印数据帧，不实际发送（无硬件调试模式）')
@@ -100,6 +109,44 @@ class ArmNode(Node):
         except Exception as e:
             self.serial = None
             self.get_logger().warn(f'串口连接失败，稍后重试: {e}', throttle_duration_sec=10.0)
+
+    def serial_read_loop(self):
+        """后台读取串口上行数据，解析固件主动上报的 NFC 刷卡帧（功能号 0x11）。"""
+        buf = b''
+        while True:
+            ser = self.serial
+            if ser is None or not ser.is_open:
+                time.sleep(0.2)
+                buf = b''
+                continue
+            try:
+                chunk = ser.read(256)
+            except Exception:
+                time.sleep(0.2)
+                continue
+            if chunk:
+                buf += chunk
+                if len(buf) > 4096:
+                    buf = buf[-2048:]
+            elif len(buf) > 2048:
+                buf = buf[-1024:]
+
+            frames, buf = extract_frames(buf)
+            for func, payload in frames:
+                if func == PACKET_FUNC_NFC and payload and payload[0] == NFC_SUBCMD_CARD:
+                    self.handle_nfc_card(payload)
+
+    def handle_nfc_card(self, payload):
+        """处理刷卡上报: [0x01, uid_len, uid...]，发布 UID 到 /armpi_lite/nfc_card。"""
+        if len(payload) < 2:
+            return
+        uid_len = payload[1]
+        uid = payload[2:2 + uid_len]
+        uid_str = ' '.join(f'{b:02X}' for b in uid)
+        msg = String()
+        msg.data = uid_str
+        self.nfc_pub.publish(msg)
+        self.report(f'刷卡: UID {uid_str}')
 
     def send_positions(self, duration_ms, positions, label):
         """positions: {舵机ID: 脉宽}"""

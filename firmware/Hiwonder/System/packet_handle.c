@@ -7,6 +7,7 @@
 #include "packet.h"
 #include "packet_reports.h"
 #include "serial_servo.h"
+#include "pn532.h"
 
 #define I2C_MAX_TRANSFER 48U
 #define I2C_TIMEOUT_MS 100U
@@ -293,10 +294,77 @@ static void packet_i2c_handle(struct PacketRawFrame *frame)
     }
 }
 
+static void packet_nfc_handle(struct PacketRawFrame *frame)
+{
+    uint8_t *data = frame->data_and_checksum;
+
+    if (frame->data_length < 1U) {
+        return;
+    }
+
+    if (data[0] == 0x02U) {
+        /* debug: scan I2C1 bus, return the 7-bit addresses that ACK */
+        uint8_t addrs[16];
+        uint8_t n = (uint8_t)pn532_i2c_scan(addrs, 16U);
+        uint8_t resp[2U + 16U];
+        resp[0] = 0x02U;
+        resp[1] = n;
+        memcpy(&resp[2], addrs, n);
+        packet_controller.transmit(&packet_controller, PACKET_FUNC_NFC, resp, 2U + n);
+    } else if (data[0] == 0x04U) {
+        /* debug: run one card search now.
+         * response: [0x04, found, uid_len, uid...]  when found;
+         *           [0x04, 0, err]                   when not found:
+         *                 err = 0 -> truly no card, err != 0 -> I2C/protocol error. */
+        uint8_t uid[PN532_UID_MAX_LEN];
+        uint8_t uid_len = 0U;
+        int r = pn532_read_passive_target_id(uid, &uid_len);
+        uint8_t resp[2U + PN532_UID_MAX_LEN];
+        resp[0] = 0x04U;
+        if (r == 0) {
+            resp[1] = 1U;
+            resp[2] = uid_len;
+            memcpy(&resp[3], uid, uid_len);
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_NFC, resp, 3U + uid_len);
+        } else {
+            resp[1] = 0U;
+            resp[2] = (r == 1) ? 0U : (uint8_t)(-r); /* 0 = no card, else error code */
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_NFC, resp, 3U);
+        }
+    } else if (data[0] == 0x06U) {
+        /* debug: raw-read up to n bytes from the PN532 (no command), return bytes */
+        uint8_t n = (frame->data_length >= 2U) ? data[1] : 0U;
+        uint8_t buf[32];
+        uint8_t resp[2U + 32U];
+        int cnt;
+        if (n == 0U || n > 32U) {
+            n = 32U;
+        }
+        cnt = pn532_raw_dump(buf, n);
+        resp[0] = 0x06U;
+        resp[1] = (uint8_t)cnt;
+        memcpy(&resp[2], buf, (uint8_t)cnt);
+        packet_controller.transmit(&packet_controller, PACKET_FUNC_NFC, resp, 2U + cnt);
+    } else if (data[0] == 0x07U) {
+        /* debug: send InListPassiveTarget, wait, raw-read up to 32 reply bytes */
+        uint8_t buf[32];
+        uint8_t resp[2U + 32U];
+        int cnt = pn532_dump_response(buf, 32U);
+        resp[0] = 0x07U;
+        resp[1] = (cnt < 0) ? 0U : (uint8_t)cnt;
+        if (cnt > 0) {
+            memcpy(&resp[2], buf, (uint8_t)cnt);
+        }
+        packet_controller.transmit(&packet_controller, PACKET_FUNC_NFC, resp,
+                                   2U + ((cnt > 0) ? (uint8_t)cnt : 0U));
+    }
+}
+
 void packet_handle_init(void)
 {
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_LED, packet_led_handle);
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_BUS_SERVO, packet_serial_servo_handle);
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_BUZZER, packet_buzzer_handle);
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_I2C, packet_i2c_handle);
+    packet_controller.register_callback(&packet_controller, PACKET_FUNC_NFC, packet_nfc_handle);
 }
