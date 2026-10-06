@@ -1,13 +1,15 @@
 """机械臂运动节点（运动学在上位机解算）。
 
 订阅:
-  /armpi_lite/target    geometry_msgs/PointStamped  目标坐标(厘米) -> 执行完整抓取流程
+  /armpi_lite/target    geometry_msgs/PointStamped  目标坐标(厘米) -> 移动到目标（到位后停留，不自动回原位）
   /armpi_lite/home_cmd  std_msgs/Empty              -> 回工作原位
+  /armpi_lite/claw_cmd  std_msgs/Float32            -> 设置夹爪张开角度(度, 0=闭合 90=张开)
 发布:
   /armpi_lite/status    std_msgs/String  执行状态（给调试界面显示）
 
-抓取流程（与原固件 MOVE_AND_CLAW 一致）:
-  移动到目标 -> 合爪 -> 回工作原位 -> 松爪
+运动逻辑：
+  - 移动到目标后即停下，不再自动回原位；
+  - 夹爪默认张开，由上位机通过 /armpi_lite/claw_cmd 主动调节，不再自动开/合。
 
 IK 在本节点解算（armpi_lite.kinematics），通过总线舵机命令(功能号5)直接下发
 各关节脉宽，STM32 固件只负责转发到舵机总线，不做逆解。
@@ -22,13 +24,15 @@ import time
 import rclpy
 from geometry_msgs.msg import PointStamped
 from rclpy.node import Node
-from std_msgs.msg import Empty, String
+from std_msgs.msg import Empty, Float32, String
 
 from armpi_lite.kinematics import (
     ARM_RANGE, HOME_PITCH, HOME_X, HOME_Y, HOME_Z, solve_ik,
 )
 from armpi_lite.serial_protocol import (
+    ISBN_SUBCMD_RESULT,
     NFC_SUBCMD_CARD,
+    PACKET_FUNC_ISBN,
     PACKET_FUNC_NFC,
     build_bus_servo_position_frame,
     claw_angle_to_position,
@@ -37,8 +41,6 @@ from armpi_lite.serial_protocol import (
 )
 
 CLAW_SERVO_ID = 1
-CLAW_RELEASE_ANGLE = 90.0   # 完全张开
-CLAW_RELEASE_TIME_MS = 500
 
 
 class ArmNode(Node):
@@ -47,37 +49,38 @@ class ArmNode(Node):
 
         self.declare_parameter('serial_port', '')
         self.declare_parameter('baudrate', 1000000)
-        self.declare_parameter('pitch', 45.0)            # 抓取时末端俯仰角（度）
+        self.declare_parameter('pitch', 45.0)            # 末端俯仰角（度），调试界面可临时修改
         self.declare_parameter('min_pitch', -90.0)
         self.declare_parameter('max_pitch', 90.0)
-        self.declare_parameter('move_time_ms', 1500)     # 移动到目标的时间
-        self.declare_parameter('claw_close_angle', 30.0) # 合爪角度（0=闭合，90=张开）
-        self.declare_parameter('claw_time_ms', 500)
-        self.declare_parameter('return_time_ms', 1500)   # 回原位的时间
-        self.declare_parameter('step_delay_ms', 20)      # 步骤间额外等待
+        self.declare_parameter('move_time_ms', 1500)       # 移动到目标的时间
+        self.declare_parameter('claw_time_ms', 500)        # 夹爪动作时间
+        self.declare_parameter('claw_default_angle', 90.0) # 上电默认夹爪角度（0=闭合，90=张开）
         self.declare_parameter('dry_run', False)
         self.declare_parameter('reconnect_interval_s', 3.0)
         self.declare_parameter('nfc_enabled', True)
+        self.declare_parameter('isbn_enabled', True)
 
         p = lambda name: self.get_parameter(name).value
         self.port_name = p('serial_port')
         self.baudrate = p('baudrate')
-        self.step_delay_ms = p('step_delay_ms')
         self.dry_run = p('dry_run')
 
         self.serial = None
+        self.claw_inited = False
         self.cmd_queue = queue.Queue(maxsize=1)
 
         self.status_pub = self.create_publisher(String, '/armpi_lite/status', 10)
         self.nfc_pub = self.create_publisher(String, '/armpi_lite/nfc_card', 10)
+        self.isbn_pub = self.create_publisher(String, '/armpi_lite/isbn_result', 10)
         self.create_subscription(PointStamped, '/armpi_lite/target', self.on_target, 10)
         self.create_subscription(Empty, '/armpi_lite/home_cmd', self.on_home_cmd, 10)
+        self.create_subscription(Float32, '/armpi_lite/claw_cmd', self.on_claw_cmd, 10)
         self.create_timer(p('reconnect_interval_s'), self.ensure_serial)
 
         self.worker = threading.Thread(target=self.work_loop, daemon=True)
         self.worker.start()
 
-        if self.get_parameter('nfc_enabled').value:
+        if self.get_parameter('nfc_enabled').value or self.get_parameter('isbn_enabled').value:
             self.reader = threading.Thread(target=self.serial_read_loop, daemon=True)
             self.reader.start()
 
@@ -106,12 +109,15 @@ class ArmNode(Node):
             self.serial.reset_input_buffer()
             self.serial.reset_output_buffer()
             self.report(f'串口已打开: {port} @ {self.baudrate}bps')
+            if not self.claw_inited:
+                self.claw_inited = True
+                self.enqueue(('claw', self.get_parameter('claw_default_angle').value))
         except Exception as e:
             self.serial = None
             self.get_logger().warn(f'串口连接失败，稍后重试: {e}', throttle_duration_sec=10.0)
 
     def serial_read_loop(self):
-        """后台读取串口上行数据，解析固件主动上报的 NFC 刷卡帧（功能号 0x11）。"""
+        """后台读取串口上行数据，解析固件主动上报的 NFC 刷卡帧(0x11)与 ISBN 识别帧(0x12)。"""
         buf = b''
         while True:
             ser = self.serial
@@ -135,6 +141,8 @@ class ArmNode(Node):
             for func, payload in frames:
                 if func == PACKET_FUNC_NFC and payload and payload[0] == NFC_SUBCMD_CARD:
                     self.handle_nfc_card(payload)
+                elif func == PACKET_FUNC_ISBN and payload and payload[0] == ISBN_SUBCMD_RESULT:
+                    self.handle_isbn_result(payload)
 
     def handle_nfc_card(self, payload):
         """处理刷卡上报: [0x01, uid_len, uid...]，发布 UID 到 /armpi_lite/nfc_card。"""
@@ -146,7 +154,17 @@ class ArmNode(Node):
         msg = String()
         msg.data = uid_str
         self.nfc_pub.publish(msg)
-        self.report(f'刷卡: UID {uid_str}')
+
+    def handle_isbn_result(self, payload):
+        """处理 ISBN 上报: [0x01, type, len, data...]，发布字符串到 /armpi_lite/isbn_result。"""
+        if len(payload) < 3:
+            return
+        data_len = payload[2]
+        data = payload[3:3 + data_len]
+        text = data.decode('ascii', errors='replace')
+        msg = String()
+        msg.data = text
+        self.isbn_pub.publish(msg)
 
     def send_positions(self, duration_ms, positions, label):
         """positions: {舵机ID: 脉宽}"""
@@ -163,7 +181,7 @@ class ArmNode(Node):
             self.serial.flush()
             if written != len(frame):
                 raise RuntimeError(f'写入不完整: {written}/{len(frame)} 字节')
-            self.get_logger().info(f'{label}: {items}')
+            self.get_logger().debug(f'{label}: {items}')
             return True
         except Exception as e:
             self.get_logger().error(f'串口发送失败: {e}')
@@ -193,7 +211,7 @@ class ArmNode(Node):
             self.report('上一个动作尚未完成，忽略本次指令')
 
     def on_target(self, msg):
-        """目标坐标订阅回调：忽略全零坐标，范围越界仅警告，然后入队抓取流程。"""
+        """目标坐标订阅回调：忽略全零坐标，范围越界仅警告，然后入队移动到目标。"""
         xyz = (msg.point.x, msg.point.y, msg.point.z)
         if xyz == (0.0, 0.0, 0.0):
             self.get_logger().warn('收到全零坐标，忽略')
@@ -202,7 +220,12 @@ class ArmNode(Node):
             lo, hi = ARM_RANGE[axis]
             if not (lo <= value <= hi):
                 self.report(f'警告: {axis}={value:.1f}cm 超出常规工作范围 [{lo}, {hi}]')
-        self.enqueue(('grasp', xyz))
+        self.enqueue(('move', xyz))
+
+    def on_claw_cmd(self, msg):
+        """夹爪角度订阅回调：限制到 [0,90] 后入队。"""
+        angle = max(0.0, min(90.0, float(msg.data)))
+        self.enqueue(('claw', angle))
 
     def on_home_cmd(self, _msg):
         self.enqueue(('home', None))
@@ -216,39 +239,23 @@ class ArmNode(Node):
         if result is None:
             self.report(f'{label}: IK 无解 ({x:.1f}, {y:.1f}, {z:.1f}) pitch={pitch}')
             return False
-        thetas, positions, alpha = result
-        self.report(f'{label}: 关节角 {[round(t, 1) for t in thetas]}，'
-                    f'脉宽 {dict(sorted(positions.items()))}（实际pitch={alpha:.1f}）')
+        _, positions, _ = result
         return self.send_positions(duration_ms, positions, label)
 
-    def run_grasp_sequence(self, xyz):
-        """完整抓取流程：移动到目标 → 合爪 → 回工作原位 → 松爪（逐步等待完成）。"""
+    def run_move(self, xyz):
+        """移动到目标位置，到位后停留，不自动回原位、不自动开合夹爪。"""
         x, y, z = xyz
         move_ms = self.get_parameter('move_time_ms').value
-        claw_ms = self.get_parameter('claw_time_ms').value
-        return_ms = self.get_parameter('return_time_ms').value
         pitch = self.get_parameter('pitch').value
-        close_angle = self.get_parameter('claw_close_angle').value
 
-        self.report(f'开始抓取流程，目标 ({x:.1f}, {y:.1f}, {z:.1f}) pitch={pitch}')
+        if self.move_to(x, y, z, pitch, move_ms, '移动到目标'):
+            self.report('已到达目标位置')
 
-        if not self.move_to(x, y, z, pitch, move_ms, '步骤1/4 移动到目标'):
-            return
-        time.sleep((move_ms + self.step_delay_ms) / 1000.0)
-
-        claw_pos = claw_angle_to_position(close_angle)
-        if not self.send_positions(claw_ms, {CLAW_SERVO_ID: claw_pos}, '步骤2/4 合爪'):
-            return
-        time.sleep((claw_ms + self.step_delay_ms) / 1000.0)
-
-        if not self.move_to(HOME_X, HOME_Y, HOME_Z, HOME_PITCH, return_ms, '步骤3/4 回工作原位'):
-            return
-        time.sleep((return_ms + self.step_delay_ms) / 1000.0)
-
-        release_pos = claw_angle_to_position(CLAW_RELEASE_ANGLE)
-        if not self.send_positions(CLAW_RELEASE_TIME_MS, {CLAW_SERVO_ID: release_pos}, '步骤4/4 松爪'):
-            return
-        self.report('抓取流程完成')
+    def set_claw(self, angle):
+        """主动设置夹爪张开角度（度，0=闭合，90=张开）。"""
+        claw_ms = self.get_parameter('claw_time_ms').value
+        pos = claw_angle_to_position(angle)
+        self.send_positions(claw_ms, {CLAW_SERVO_ID: pos}, f'设置夹爪角度 {angle:.1f}°')
 
     def run_home(self):
         """回工作原位（固件 go_home 等价动作）。"""
@@ -260,10 +267,12 @@ class ArmNode(Node):
         """工作线程：串行消费动作队列，保证动作流程不被并发打断。"""
         while True:
             cmd, arg = self.cmd_queue.get()
-            if cmd == 'grasp':
-                self.run_grasp_sequence(arg)
+            if cmd == 'move':
+                self.run_move(arg)
             elif cmd == 'home':
                 self.run_home()
+            elif cmd == 'claw':
+                self.set_claw(arg)
 
     def destroy_node(self):
         if self.serial is not None and self.serial.is_open:

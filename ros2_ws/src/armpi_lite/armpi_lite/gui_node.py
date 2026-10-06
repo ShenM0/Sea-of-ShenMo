@@ -1,10 +1,10 @@
 """可视化调试界面节点（PyQt5）。
 
 两种调试模式（界面下拉切换；相机/检测节点是否启动由 launch 参数 use_camera 决定）：
-- 无相机调试：手动输入 X/Y/Z/pitch，点击"执行动作流程"，机械臂移动并完成整套动作
-- 相机调试：显示检测画面与稳定目标坐标，可点击"执行抓取"（或 config 里开 auto_trigger 自动执行）
+- 无相机调试：手动输入 X/Y/Z/pitch，点击“移动到目标”，机械臂移动到目标后停留
+- 相机调试：显示检测画面与稳定目标坐标，可点击“执行抓取”
 
-公共按钮：回工作原位；底部为状态日志（订阅 /armpi_lite/status）。
+公共按钮：回工作原位；夹爪角度滑动条（上位机主动调节，默认张开）；底部为状态日志。
 """
 
 import threading
@@ -18,14 +18,14 @@ from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.parameter import Parameter
 from sensor_msgs.msg import Image
-from std_msgs.msg import Empty, String
+from std_msgs.msg import Empty, Float32, String
 
 from PyQt5.QtCore import QTimer, Qt, pyqtSignal
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import (
     QApplication, QComboBox, QDoubleSpinBox, QFormLayout, QGroupBox,
-    QHBoxLayout, QLabel, QMainWindow, QPlainTextEdit, QPushButton, QVBoxLayout,
-    QWidget,
+    QHBoxLayout, QLabel, QMainWindow, QPlainTextEdit, QPushButton, QSlider,
+    QVBoxLayout, QWidget,
 )
 
 
@@ -34,17 +34,20 @@ class GuiNode(Node):
         super().__init__('arm_gui')
         self.target_pub = self.create_publisher(PointStamped, '/armpi_lite/target', 10)
         self.home_pub = self.create_publisher(Empty, '/armpi_lite/home_cmd', 10)
+        self.claw_pub = self.create_publisher(Float32, '/armpi_lite/claw_cmd', 10)
         self.pitch_client = self.create_client(SetParameters, '/arm_controller/set_parameters')
 
         self.create_subscription(String, '/armpi_lite/status', self.on_status, 10)
         self.create_subscription(PointStamped, '/armpi_lite/target_stable', self.on_stable, 10)
         self.create_subscription(Image, '/armpi_lite/detection_image', self.on_image, 2)
         self.create_subscription(String, '/armpi_lite/nfc_card', self.on_nfc, 10)
+        self.create_subscription(String, '/armpi_lite/isbn_result', self.on_isbn, 10)
 
         self.status_callback = None
         self.stable_callback = None
         self.image_callback = None
         self.nfc_callback = None
+        self.isbn_callback = None
 
     def on_status(self, msg):
         if self.status_callback:
@@ -61,6 +64,10 @@ class GuiNode(Node):
     def on_nfc(self, msg):
         if self.nfc_callback:
             self.nfc_callback(msg.data)
+
+    def on_isbn(self, msg):
+        if self.isbn_callback:
+            self.isbn_callback(msg.data)
 
     def set_pitch(self, pitch):
         """通过参数服务临时修改 arm_controller 节点的 pitch 参数（不改变配置文件）。"""
@@ -86,12 +93,19 @@ class GuiNode(Node):
         """发布回工作原位指令。"""
         self.home_pub.publish(Empty())
 
+    def send_claw(self, angle):
+        """发布夹爪张开角度（度，0=闭合，90=张开）。"""
+        msg = Float32()
+        msg.data = float(angle)
+        self.claw_pub.publish(msg)
+
 
 class MainWindow(QMainWindow):
     status_received = pyqtSignal(str)
     stable_received = pyqtSignal(tuple)
     image_received = pyqtSignal(object)
     nfc_received = pyqtSignal(str)
+    isbn_received = pyqtSignal(str)
 
     def __init__(self, node):
         super().__init__()
@@ -105,10 +119,12 @@ class MainWindow(QMainWindow):
         node.stable_callback = self.stable_received.emit
         node.image_callback = self.image_received.emit
         node.nfc_callback = self.nfc_received.emit
+        node.isbn_callback = self.isbn_received.emit
         self.status_received.connect(self.append_status)
         self.stable_received.connect(self.update_stable)
         self.image_received.connect(self.update_image)
         self.nfc_received.connect(self.update_nfc)
+        self.isbn_received.connect(self.update_isbn)
 
         central = QWidget()
         self.setCentralWidget(central)
@@ -136,7 +152,7 @@ class MainWindow(QMainWindow):
         form.addRow('Z (上):', self.z_spin)
         form.addRow('pitch (俯仰角):', self.pitch_spin)
         btn_row = QHBoxLayout()
-        run_btn = QPushButton('执行动作流程')
+        run_btn = QPushButton('移动到目标')
         run_btn.clicked.connect(self.on_run_clicked)
         home_btn = QPushButton('回工作原位')
         home_btn.clicked.connect(self.node.send_home)
@@ -144,6 +160,24 @@ class MainWindow(QMainWindow):
         btn_row.addWidget(home_btn)
         form.addRow(btn_row)
         root.addWidget(manual_box)
+
+        # 夹爪控制（上位机主动调节张开角度，默认张开）
+        claw_box = QGroupBox('夹爪控制（0=闭合，90=张开）')
+        claw_layout = QHBoxLayout(claw_box)
+        claw_layout.addWidget(QLabel('张开角度:'))
+        self.claw_slider = QSlider(Qt.Horizontal)
+        self.claw_slider.setRange(0, 90)
+        self.claw_slider.setValue(90)
+        self.claw_slider.valueChanged.connect(self.on_claw_slider_changed)
+        self.claw_slider.sliderReleased.connect(self.on_claw_released)
+        claw_layout.addWidget(self.claw_slider)
+        self.claw_label = QLabel('90° 张开')
+        self.claw_label.setMinimumWidth(80)
+        claw_layout.addWidget(self.claw_label)
+        claw_btn = QPushButton('应用')
+        claw_btn.clicked.connect(self.on_claw_apply)
+        claw_layout.addWidget(claw_btn)
+        root.addWidget(claw_box)
 
         # 相机调试区
         self.camera_box = QGroupBox('相机调试')
@@ -177,6 +211,17 @@ class MainWindow(QMainWindow):
         nfc_layout.addWidget(QLabel('提示: 卡片靠近 PN532 后自动显示卡号 UID'))
         root.addWidget(nfc_box)
 
+        # ISBN 识别显示（订阅 /armpi_lite/isbn_result，由 arm_node 后台读取串口上报）
+        isbn_box = QGroupBox('ISBN 识别')
+        isbn_layout = QVBoxLayout(isbn_box)
+        self.isbn_label = QLabel('暂无识别')
+        self.isbn_label.setAlignment(Qt.AlignCenter)
+        self.isbn_label.setStyleSheet(
+            'font-size: 24px; font-weight: bold; color: #36c;')
+        isbn_layout.addWidget(self.isbn_label)
+        isbn_layout.addWidget(QLabel('提示: 书背条码(EAN-13)对准 ESP32-S3-Cam 后自动显示'))
+        root.addWidget(isbn_box)
+
         # 状态日志
         status_box = QGroupBox('状态')
         status_layout = QVBoxLayout(status_box)
@@ -204,8 +249,22 @@ class MainWindow(QMainWindow):
         xyz = (self.x_spin.value(), self.y_spin.value(), self.z_spin.value())
         self.node.set_pitch(self.pitch_spin.value())
         self.node.send_target(xyz)
-        self.append_status(f'[界面] 下发目标 ({xyz[0]:.1f}, {xyz[1]:.1f}, {xyz[2]:.1f}) '
+        self.append_status(f'[界面] 移动到目标 ({xyz[0]:.1f}, {xyz[1]:.1f}, {xyz[2]:.1f}) '
                            f'pitch={self.pitch_spin.value():.1f}')
+
+    def on_claw_slider_changed(self, value):
+        state = '张开' if value >= 80 else ('闭合' if value <= 10 else '半开')
+        self.claw_label.setText(f'{value}° {state}')
+
+    def on_claw_released(self):
+        self.apply_claw()
+
+    def on_claw_apply(self):
+        self.apply_claw()
+
+    def apply_claw(self):
+        self.node.send_claw(self.claw_slider.value())
+        self.append_status(f'[界面] 设置夹爪角度 {self.claw_slider.value()}°')
 
     def on_grasp_clicked(self):
         if self.stable_xyz is None:
@@ -225,6 +284,10 @@ class MainWindow(QMainWindow):
     def update_nfc(self, uid_str):
         self.nfc_label.setText(f'UID: {uid_str}')
         self.append_status(f'[NFC] 刷卡 UID: {uid_str}')
+
+    def update_isbn(self, text):
+        self.isbn_label.setText(f'ISBN: {text}')
+        self.append_status(f'[ISBN] {text}')
 
     def update_image(self, msg):
         img = np.frombuffer(msg.data, dtype=np.uint8).reshape(msg.height, msg.width, 3)

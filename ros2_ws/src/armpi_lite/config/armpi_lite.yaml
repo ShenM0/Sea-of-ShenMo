@@ -36,14 +36,13 @@ arm_controller:
   ros__parameters:
     serial_port: ''        # 留空自动探测 /dev/ttyUSB*、/dev/ttyACM*，也可用环境变量 ARM_SERIAL_PORT
     baudrate: 1000000
-    pitch: 45.0            # 抓取时末端俯仰角（度），调试界面可临时修改
+    pitch: 45.0            # 末端俯仰角（度），调试界面可临时修改
     min_pitch: -90.0
     max_pitch: 90.0
     move_time_ms: 1500     # 移动到目标的时间
-    claw_close_angle: 30.0 # 合爪角度（0=完全闭合，90=完全张开）
     claw_time_ms: 500      # 夹爪动作时间
-    return_time_ms: 1500   # 回工作原位的时间
-    step_delay_ms: 20      # 步骤间额外等待
+    claw_default_angle: 90.0  # 上电默认夹爪角度（0=完全闭合，90=完全张开）
     dry_run: false         # true = 只打印数据帧不发送（无硬件调试）
     reconnect_interval_s: 3.0
     nfc_enabled: true      # true = 开启 PN532(NFC) 刷卡上报读取线程
+    isbn_enabled: true     # true = 开启 ESP32-S3-Cam ISBN 识别上报读取线程

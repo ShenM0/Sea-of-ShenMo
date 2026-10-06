@@ -24,6 +24,13 @@ NFC_SUBCMD_POLL = 0x04   # 请求单次寻卡
 NFC_SUBCMD_RAW_READ = 0x06  # 调试: 原始读 n 字节（不写命令）
 NFC_SUBCMD_DUMP = 0x07      # 调试: 写寻卡命令后原始读回复
 
+# ESP32-S3-Cam ISBN(EAN-13)（固件功能号 0x12）
+PACKET_FUNC_ISBN = 0x12
+ISBN_SUBCMD_RESULT = 0x01   # 固件主动上报: [0x01, type, len, data...]
+ISBN_SUBCMD_SCAN = 0x02     # 请求扫描 I2C1 总线
+ISBN_SUBCMD_READ_REG = 0x03 # 请求读 ESP32 从机寄存器 [0x03, reg]
+ISBN_SUBCMD_READ_ONCE = 0x04  # 请求单次读结果
+
 DEFAULT_SERIAL_CANDIDATES = [
     "/dev/ttyUSB0",
     "/dev/ttyACM0",
@@ -149,6 +156,21 @@ def build_nfc_raw_read_frame(n):
 def build_nfc_dump_frame():
     """调试: 请求固件写寻卡命令后原始读回复。"""
     return _build_frame(PACKET_FUNC_NFC, bytes([NFC_SUBCMD_DUMP]))
+
+
+def build_isbn_scan_frame():
+    """请求固件扫描 I2C1 总线（用于确认 ESP32 从机地址 0x52）。"""
+    return _build_frame(PACKET_FUNC_ISBN, bytes([ISBN_SUBCMD_SCAN]))
+
+
+def build_isbn_read_reg_frame(reg):
+    """调试: 请求固件读 ESP32 从机某个寄存器（0x00~0x03）。"""
+    return _build_frame(PACKET_FUNC_ISBN, bytes([ISBN_SUBCMD_READ_REG, reg]))
+
+
+def build_isbn_read_once_frame():
+    """调试: 请求固件立即读取一次 ISBN 结果。"""
+    return _build_frame(PACKET_FUNC_ISBN, bytes([ISBN_SUBCMD_READ_ONCE]))
 
 
 def extract_frames(buf):

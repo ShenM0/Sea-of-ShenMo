@@ -1,0 +1,31 @@
+[0.679s] Invoking command in '/home/shenmo/ros/ros2ver/ros2_ws/src/armpi_lite': PYTHONPATH=/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/armpi_lite build --build-base /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build install --record /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log --install-scripts $base/lib/armpi_lite --single-version-externally-managed install_data
+[0.910s] running egg_info
+[0.911s] writing ../../build/armpi_lite/armpi_lite.egg-info/PKG-INFO
+[0.911s] writing dependency_links to ../../build/armpi_lite/armpi_lite.egg-info/dependency_links.txt
+[0.912s] writing entry points to ../../build/armpi_lite/armpi_lite.egg-info/entry_points.txt
+[0.912s] writing requirements to ../../build/armpi_lite/armpi_lite.egg-info/requires.txt
+[0.913s] writing top-level names to ../../build/armpi_lite/armpi_lite.egg-info/top_level.txt
+[0.915s] reading manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+[0.917s] writing manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+[0.917s] running build
+[0.917s] running build_py
+[0.917s] copying armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[0.918s] copying armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+[0.918s] running install
+[0.918s] running install_lib
+[0.919s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[0.920s] copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+[0.921s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/arm_node.py to arm_node.cpython-310.pyc
+[0.923s] byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/gui_node.py to gui_node.cpython-310.pyc
+[0.925s] running install_data
+[0.926s] copying config/armpi_lite.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/config
+[0.928s] running install_egg_info
+[0.929s] removing '/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info' (and everything under it)
+[0.930s] Copying ../../build/armpi_lite/armpi_lite.egg-info to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info
+[0.932s] running install_scripts
+[0.954s] Installing arm_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[0.954s] Installing camera_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[0.954s] Installing detect_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[0.954s] Installing gui_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+[0.954s] writing list of installed files to '/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log'
+[0.988s] Invoked command in '/home/shenmo/ros/ros2ver/ros2_ws/src/armpi_lite' returned '0': PYTHONPATH=/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/armpi_lite build --build-base /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build install --record /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log --install-scripts $base/lib/armpi_lite --single-version-externally-managed install_data

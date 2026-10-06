@@ -747,6 +747,16 @@
               <FileType>5</FileType>
               <FilePath>..\Hiwonder\Peripherals\Src\sw_i2c.h</FilePath>
             </File>
+            <File>
+              <FileName>esp32_isbn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hiwonder\Peripherals\Src\esp32_isbn.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32_isbn.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hiwonder\Peripherals\Src\esp32_isbn.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

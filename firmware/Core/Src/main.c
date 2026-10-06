@@ -29,6 +29,7 @@
 /* USER CODE BEGIN Includes */
 #include "global.h"
 #include "pn532.h"
+#include "esp32_isbn.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "led.h" 
@@ -130,6 +131,7 @@ int main(void)
 		buzzers[0].refresh(&buzzers[0]); 
 		recv_task();
 		nfc_task_poll(); /* PN532 NFC card polling + report */
+		esp32_isbn_task_poll(); /* ESP32-S3-Cam ISBN result polling + report */
 		
 		
   }

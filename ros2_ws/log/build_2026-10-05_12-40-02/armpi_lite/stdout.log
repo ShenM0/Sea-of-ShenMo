@@ -1,0 +1,29 @@
+running egg_info
+writing ../../build/armpi_lite/armpi_lite.egg-info/PKG-INFO
+writing dependency_links to ../../build/armpi_lite/armpi_lite.egg-info/dependency_links.txt
+writing entry points to ../../build/armpi_lite/armpi_lite.egg-info/entry_points.txt
+writing requirements to ../../build/armpi_lite/armpi_lite.egg-info/requires.txt
+writing top-level names to ../../build/armpi_lite/armpi_lite.egg-info/top_level.txt
+reading manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+writing manifest file '../../build/armpi_lite/armpi_lite.egg-info/SOURCES.txt'
+running build
+running build_py
+copying armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+copying armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite
+running install
+running install_lib
+copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/arm_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+copying /home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/build/lib/armpi_lite/gui_node.py -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite
+byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/arm_node.py to arm_node.cpython-310.pyc
+byte-compiling /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite/gui_node.py to gui_node.cpython-310.pyc
+running install_data
+copying config/armpi_lite.yaml -> /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/share/armpi_lite/config
+running install_egg_info
+removing '/home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/armpi_lite/armpi_lite.egg-info to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/python3.10/site-packages/armpi_lite-0.1.0-py3.10.egg-info
+running install_scripts
+Installing arm_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+Installing camera_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+Installing detect_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+Installing gui_node script to /home/shenmo/ros/ros2ver/ros2_ws/install/armpi_lite/lib/armpi_lite
+writing list of installed files to '/home/shenmo/ros/ros2ver/ros2_ws/build/armpi_lite/install.log'

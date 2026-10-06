@@ -8,6 +8,7 @@
 #include "packet_reports.h"
 #include "serial_servo.h"
 #include "pn532.h"
+#include "esp32_isbn.h"
 
 #define I2C_MAX_TRANSFER 48U
 #define I2C_TIMEOUT_MS 100U
@@ -360,6 +361,73 @@ static void packet_nfc_handle(struct PacketRawFrame *frame)
     }
 }
 
+static void packet_isbn_handle(struct PacketRawFrame *frame)
+{
+    uint8_t *data = frame->data_and_checksum;
+
+    if (frame->data_length < 1U) {
+        return;
+    }
+
+    if (data[0] == 0x02U) {
+        /* debug: scan I2C1 bus, return the 7-bit addresses that ACK.
+         * PN532 = 0x24, ESP32-S3-Cam = 0x52. */
+        uint8_t addrs[16];
+        uint8_t n = (uint8_t)pn532_i2c_scan(addrs, 16U);
+        uint8_t resp[2U + 16U];
+        resp[0] = 0x02U;
+        resp[1] = n;
+        memcpy(&resp[2], addrs, n);
+        packet_controller.transmit(&packet_controller, PACKET_FUNC_ISBN, resp, 2U + n);
+    } else if (data[0] == 0x03U) {
+        /* debug: read one ESP32 slave register.
+         * request [0x03, reg]; response [0x03, reg, err, data...] */
+        uint8_t reg = (frame->data_length >= 2U) ? data[1] : 0xFFU;
+        uint8_t buf[ESP32_ISBN_MAX_LEN];
+        uint8_t resp[3U + ESP32_ISBN_MAX_LEN];
+        uint16_t n = (reg == ESP32_ISBN_REG_DATA) ? ESP32_ISBN_MAX_LEN : 1U;
+        int r;
+
+        if (reg > 0x03U) {
+            return;
+        }
+        r = esp32_isbn_read_reg(reg, buf, n);
+        resp[0] = 0x03U;
+        resp[1] = reg;
+        if (r == 0) {
+            resp[2] = 0U;
+            memcpy(&resp[3], buf, n);
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_ISBN, resp, 3U + n);
+        } else {
+            resp[2] = (uint8_t)(-r);
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_ISBN, resp, 3U);
+        }
+    } else if (data[0] == 0x04U) {
+        /* debug: one-shot result read now.
+         * response [0x04, found, type, len, data...] when ready,
+         *          [0x04, 0, err] otherwise. */
+        uint8_t t = 0U;
+        uint8_t d[ESP32_ISBN_MAX_LEN];
+        uint8_t l = 0U;
+        uint8_t resp[4U + ESP32_ISBN_MAX_LEN];
+        int r = esp32_isbn_read_result(&t, d, &l);
+
+        if (r == 0) {
+            resp[0] = 0x04U;
+            resp[1] = 1U;
+            resp[2] = t;
+            resp[3] = l;
+            memcpy(&resp[4], d, l);
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_ISBN, resp, 4U + l);
+        } else {
+            resp[0] = 0x04U;
+            resp[1] = 0U;
+            resp[2] = (r == 1) ? 0U : (uint8_t)(-r);
+            packet_controller.transmit(&packet_controller, PACKET_FUNC_ISBN, resp, 3U);
+        }
+    }
+}
+
 void packet_handle_init(void)
 {
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_LED, packet_led_handle);
@@ -367,4 +435,5 @@ void packet_handle_init(void)
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_BUZZER, packet_buzzer_handle);
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_I2C, packet_i2c_handle);
     packet_controller.register_callback(&packet_controller, PACKET_FUNC_NFC, packet_nfc_handle);
+    packet_controller.register_callback(&packet_controller, PACKET_FUNC_ISBN, packet_isbn_handle);
 }
